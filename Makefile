@@ -1,5 +1,5 @@
 NAME = dockerbase/docker
-VERSION = 1.0
+VERSION = 1.1
 
 .PHONY: all build test tag_latest release ssh enter
 
@@ -12,15 +12,7 @@ test:
 	docker run -it --rm $(NAME):$(VERSION) echo hello world!
 
 run:
-	#mkdir -p /var/dockerbase/docker
-	#chown 102 /var/dockerbase/docker
 	docker run -it --rm --name dockerbase-docker $(NAME):$(VERSION)
-
-#start:
-#	docker start `cat cidfile`
-
-#log:
-#	docker logs `cat cidfile`
 
 ls_volume:
 	@ID=$$(docker ps | grep -F "$(NAME):$(VERSION)" | awk '{ print $$1 }') && \
@@ -32,13 +24,6 @@ ls_volume:
 version:
 	docker run -it --rm $(NAME):$(VERSION) sh -c ' git --version ; docker -v; ' | tee COMPONENTS
 	dos2unix COMPONENTS
-
-#stop:
-#	docker stop -t 10 `cat cidfile`
-
-#rm:
-#	docker rm `cat cidfile`
-#	rm -fr cidfile
 
 tag_latest:
 	docker tag $(NAME):$(VERSION) $(NAME):latest

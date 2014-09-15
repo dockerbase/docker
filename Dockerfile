@@ -1,4 +1,4 @@
-# VERSION 1.0
+# VERSION 1.1
 # DOCKER-VERSION  1.2.0
 # AUTHOR:         Richard Lee <lifuzu@gmail.com>
 # DESCRIPTION:    Docker Image Container
@@ -23,15 +23,12 @@ RUN     echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list
 RUN     apt-get update
 RUN     apt-get install -y --no-install-recommends lxc-$PKG_NAME
 
+# Ruby & Pups
+RUN     apt-get install -y --no-install-recommends ruby rbenv
+RUN     cd / && git clone https://github.com/weimed/pups.git
+
 # Clean up system
 RUN	apt-get clean
-
-# Define mountable directories.
-#VOLUME 	["", ""]
-
-# for main ports:
-#EXPOSE  80 
-#EXPOSE  443 
 
 # Set environment variables.
 ENV     HOME /root
