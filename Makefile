@@ -22,7 +22,7 @@ ls_volume:
 		ls -ls $$DIR
 
 version:
-	docker run -it --rm $(NAME):$(VERSION) sh -c ' git --version ; docker -v; ' | tee COMPONENTS
+	docker run -it --rm $(NAME):$(VERSION) sh -c ' lsb_release -d ; git --version ; ruby -v ; ssh -V ; docker -v; ' | tee COMPONENTS
 	dos2unix COMPONENTS
 
 tag_latest:
