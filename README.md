@@ -6,7 +6,7 @@ This repository contains **Dockerbase** of [Docker](https://www.docker.com/) for
 
 ### Depends on:
 
-* [dockerbase/openssh-server](https://registry.hub.docker.com/u/dockerbase/openssh-server)
+* [dockerbase/devbase](https://registry.hub.docker.com/u/dockerbase/devbase)
 
 
 ### Installation
@@ -18,4 +18,11 @@ This repository contains **Dockerbase** of [Docker](https://www.docker.com/) for
 
 ### Usage
 
-    docker run -it --rm --name dockerbase-docker dockerbase/docker
+    $ sudo docker run --name dockerbase-docker --privileged --restart=always -t --cidfile cidfile -d dockerbase/docker /sbin/runit
+
+### Components & Versions
+
+    Description:	Ubuntu 14.04.1 LTS
+    git version 1.9.1
+    OpenSSH_6.6.1p1 Ubuntu-2ubuntu2, OpenSSL 1.0.1f 6 Jan 2014
+    Docker version 1.2.0, build fa7b24f
